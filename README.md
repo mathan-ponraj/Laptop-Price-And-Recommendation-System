@@ -51,8 +51,8 @@ The dataset contains various laptop specifications and corresponding prices. Key
 - `Storage`: Type and size of storage (e.g., 256GB SSD, 1TB HDD).
 - `Brand`: Brand name of the laptop.
 
-If the dataset is included:
-- Add the dataset files in a `data/` folder:
+The dataset is included:
+- Dataset files into a `data/` folder:
   - `laptop_price_recommendation_cleaned_dataset.csv`: Original dataset.
   - `input_features.csv,output_features.csv`: Cleaned dataset after preprocessing.
 
