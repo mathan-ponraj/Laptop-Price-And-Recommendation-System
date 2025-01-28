@@ -52,7 +52,7 @@ Laptops vary significantly in price depending on their specifications, such as p
 4. Execute the cells to view the visualizations.
 ---
 
-#📊 Results
+# 📊 Results
 - **Price vs. RAM:** A positive correlation is observed; higher RAM often leads to higher prices.
 - **Price vs. Processor Generation:**Newer generations significantly increase laptop prices.
 - **Brand vs. Price:** Box plots reveal that premium brands like Apple have higher median prices compared to others.
