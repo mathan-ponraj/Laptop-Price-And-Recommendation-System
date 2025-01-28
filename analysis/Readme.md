@@ -4,7 +4,7 @@ This project performs data analysis and visualization for a laptop price predict
 
 ---
 
-## 📌 **Introduction**
+## 📌**Introduction**
 
 Laptops vary significantly in price depending on their specifications, such as processor generation, RAM, and storage capacity. This project provides an exploratory analysis of the dataset used for laptop price prediction and recommendation. Various plots and visualizations are created to uncover relationships and trends within the data.
 
@@ -38,29 +38,29 @@ Laptops vary significantly in price depending on their specifications, such as p
 1. Clone the repository:
    ```
    git clone https://github.com/your_username/your_repository.git
-
-```
+   ```
 2. Install dependencies:
-  ```
+   ```
    pip install pandas numpy matplotlib seaborn scikit-learn
-  ```
+   ```
 
 3. Open the Jupyter Notebook:
-  ```
-  jupyter notebook visualaizations_for_laptop_recommendation_model.ipynb
-  ```
+   ```
+   jupyter notebook visualaizations_for_laptop_recommendation_model.ipynb
+   ```
 4. Execute the cells to view the visualizations.
 ---
 
 # 📊 Results
 - **Price vs. RAM:** A positive correlation is observed; higher RAM often leads to higher prices.
-- **Price vs. Processor Generation:**Newer generations significantly increase laptop prices.
+- **Price vs. Processor Generation:** Newer generations significantly increase laptop prices.
 - **Brand vs. Price:** Box plots reveal that premium brands like Apple have higher median prices compared to others.
 - **Feature Correlation:** A heatmap shows strong relationships between Price, Processor_gen, and RAM_GB.
 - **KNN Results:** Scatter plots visualize how the model classifies brands based on laptop specs.
 
 ---
 # 🤝 Contributing
+
 Contributions are welcome! Feel free to open issues or submit pull requests.
 ---
 
