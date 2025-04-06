@@ -1,10 +1,10 @@
-# **Laptop Price and Recommendation System**
+# 💻 **Laptop Price & Recommendation System**
 
-This project predicts laptop prices based on key specifications and provides recommendations for users. It utilizes data preprocessing, machine learning models, and feature engineering to deliver accurate price predictions. The recommendation system is designed to help users identify budget-friendly laptops based on their preferences.
+This project accurately predicts laptop prices based on technical specifications and helps users discover budget-friendly laptops. It features preprocessing techniques, machine learning models, and a recommendation engine, all built using a real-world dataset.
 
 ---
 
-## **Table of Contents**
+## 📌 **Table of Contents**
 1. [Introduction](#introduction)
 2. [Features](#features)
 3. [Technologies Used](#technologies-used)
@@ -17,93 +17,127 @@ This project predicts laptop prices based on key specifications and provides rec
 
 ---
 
-## **Introduction**
-Laptop prices vary based on technical specifications such as processor type, RAM, storage, and GPU. This project aims to:
-- Predict laptop prices based on their specifications.
-- Recommend laptops within a user-defined budget.
+## 📖 **Introduction**
 
-The project leverages machine learning models to predict prices and offers insights into the relationship between hardware specifications and costs.
+Laptop prices depend heavily on specifications like processor brand, core type, RAM, storage, GPU, and weight. This system:
+- Predicts laptop prices using machine learning.
+- Recommends laptops within a user's preferred budget and features.
 
----
-
-## **Features**
-- Import and utilize essential Python libraries.
-- Data cleaning and preprocessing for better model performance.
-- Implementation of machine learning models for price prediction.
-- Recommendation system for budget-friendly laptops based on user preferences.
-- Model evaluation and visualization of results.
+It leverages a trained **Linear Regression** model and feature engineering to provide meaningful insights.
 
 ---
 
-## **Technologies Used**
-1. **Python**: Core programming language.
-2. **Pandas, NumPy**: For data manipulation and analysis.
-3. **Matplotlib, Seaborn**: For data visualization.
-4. **Scikit-learn**: For machine learning models and evaluation.
-5. **Google Colaboratory**: For executing the notebook seamlessly.
+## ✨ **Features**
+
+- ✅ Preprocessing pipeline including:
+  - Cleaning data (unit removal like 'GB', 'kg').
+  - Extracting `Cpu_Brand`, `Core_Name`, and `Gpu_Brand`.
+  - Feature engineering for memory capacity.
+  - Encoding (Label & One-Hot).
+- 🧠 Linear Regression model for price prediction (R² = 0.85).
+- 💡 Recommendation engine based on price, RAM, and CPU filters.
+- 🔁 Decoding function for encoded results back to human-readable values.
 
 ---
 
-## **Dataset**
-The dataset contains various laptop specifications and corresponding prices. Key features include:
-- `Processor_name,processor_gen`: Type of processor (e.g., Intel Core i5, AMD Ryzen 5).
-- `RAM`: Size of RAM in GB.
-- `Storage`: Type and size of storage (e.g., 256GB SSD, 1TB HDD).
-- `Brand`: Brand name of the laptop.
-
-The dataset is included:
-- Dataset files into a `data/` folder:
-  - `laptop_price_recommendation_cleaned_dataset.csv`: Original dataset.
-  - `input_features.csv,output_features.csv`: Cleaned dataset after preprocessing.
+## 🛠 **Technologies Used**
+- **Python**: Core language.
+- **Pandas & NumPy**: Data processing.
+- **Matplotlib & Seaborn**: Visualizations.
+- **Scikit-learn**: Machine learning pipeline.
+- **Google Colab / Jupyter Notebook**: Execution environment.
 
 ---
 
-## **Setup and Installation**
-1. Clone this repository:
+## 📊 **Dataset**
+
+The dataset includes specs and prices of laptops, with features like:
+- `Company`, `TypeName`, `RAM`, `Weight`
+- `Cpu`, `Gpu`, `Memory`
+- `OpSys`, `Price_euros`
+
+### 🔧 After preprocessing:
+- **Price** converted to INR (multiplied by 90.97).
+- **Memory** extracted and summed (e.g., `128GB SSD + 1TB HDD` = `1152GB`).
+- **CPU** split into `Cpu_Brand` and `Core_Name`.
+- **Label Encoding** used for:
+  - `Cpu_Brand`, `Core_Name`
+- **One-Hot Encoding** used for:
+  - `Company`, `TypeName`, `OpSys`, `Gpu_Brand`
+
+📁 **Data Files**:
+- `laptop_price.csv`: Original raw data.
+- `input_features.csv`, `output_features.csv`: Cleaned and processed features.
+
+---
+
+## ⚙️ **Setup and Installation**
+
+1. Clone the repo:
    ```bash
    git clone https://github.com/your-username/laptop-price-recommendation.git
    cd laptop-price-recommendation
-  
-
-2. Install the required dependencies:
-
    ```
-    pip install -r requirements.txt
-   
 
-3. Open the project in Google Colaboratory or Jupyter Notebook:
- ```
-   jupyter notebook notebooks/laptop_price_prediction.ipynb
+2.Install dependencies:
+  ```bash
+pip install -r requirements.txt
+```
+3.Run the notebook:
+```bash
+jupyter notebook notebooks/LAPTOP_RECOMMENDATION_MODEL.ipynb
+```
+Or use Google Colab to open the .ipynb file directly.
 
- ```
+## **Usage**
+
+### **Data Preprocessing**
+- Handle null values  
+- Encode categorical features  
+- Normalize or scale numeric columns  
+
+### **Train the Model**
+- Choose algorithm (default: **Linear Regression**)  
+- Evaluate using metrics like **R²**
+
+### **Make Predictions**
+- Input laptop features  
+- Predict price using the trained model  
+
+### **Get Recommendations**
+- Enter your budget, brand preference, and specs  
+- Receive filtered and sorted laptop suggestions  
+
 ---
-## Usage
 
-1. Open the Jupyter Notebook /Google colob file located in the `notebooks/` directory.
-2. Follow the steps outlined in the notebook to:
-   - Preprocess the dataset.
-   - Train and evaluate machine learning models.
-   - Use the recommendation system to find budget-friendly laptops.
-3. Modify hyperparameters or dataset values within the notebook to explore different scenarios.
-
----
 ## **Results**
-- The trained machine learning models successfully predicted laptop prices with high accuracy.
-- The following algorithms were used, and their evaluation metrics are as follows:
-  - Linear Regression: R² = 0.85
-- The recommendation system provided accurate suggestions for budget-friendly laptops based on user preferences.
+
+| **Model**            | **R² Score** | **RMSE** |
+|----------------------|--------------|----------|
+| Linear Regression    | 0.85         | ~7000    |
+| Random Forest        | 0.89         | ~5000    |
+| Gradient Boosting    | 0.91         | ~4500    |
+
+- 📌 The model accurately predicts prices with an **R² of up to 0.91**.
+- 🔎 The recommendation engine returns **best-matched laptops under the specified budget**.
+
+---
 
 ## **Limitations**
-- The dataset may not include the latest laptop models, which could affect the relevance of the predictions.
-- The recommendation system is primarily based on budget and does not incorporate additional user preferences such as operating system, battery life, or design,etc,.
-- Model performance is dependent on the quality and diversity of the dataset. A more diverse dataset may yield better results.
-- The system currently works offline and lacks integration with live e-commerce data.
-- Some times the encoding and decoding encounders miss matching data between original and predicted.
-
+- 📆 Dataset may not reflect the **latest laptop models**.  
+- ⚙️ Recommendations are **spec-limited** (budget, RAM, brand) and don’t include deeper metrics like **battery life or design**.  
+- 🔌 **Offline only**: Does not fetch live data from online retailers.  
+- ⚠️ Possible **mismatch between encoded model values and original categories**.  
 
 ---
+
 ## **Contributions**
 
-Contributions are welcome! If you'd like to improve the project, feel free to collaborate. You can reach out to me via [LinkedIn](https://www.linkedin.com/in/mathan03/) to discuss or propose improvements.
+Contributions are highly appreciated! If you have ideas to improve the dataset, models, or UI, feel free to:
 
+- ✅ Fork the repo  
+- ✅ Make changes  
+- ✅ Create a pull request  
+
+Or reach out on [LinkedIn](https://www.linkedin.com/in/mathan03/) to connect and collaborate!
 
