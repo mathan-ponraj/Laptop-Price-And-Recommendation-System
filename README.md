@@ -1,77 +1,93 @@
-# 💻 **Laptop Price & Recommendation System**
+# Laptop Price & Recommendation System
 
-This project accurately predicts laptop prices based on technical specifications and helps users discover budget-friendly laptops. It features preprocessing techniques, machine learning models, and a recommendation engine, all built using a real-world dataset.
+A complete end-to-end machine learning solution that predicts laptop prices based on technical specifications and recommends budget-friendly models. The system features a full ML pipeline, a real-world deployment-ready web app (via Streamlit), and visual insights powered by a clean recommendation engine.
 
 ---
 
-## 📌 **Table of Contents**
-1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Technologies Used](#technologies-used)
-4. [Dataset](#dataset)
-5. [Setup and Installation](#setup-and-installation)
-6. [Usage](#usage)
-7. [Results](#results)
-8. [Limitations](#limitations)
+## Table of Contents
+1. [Introduction](#introduction)  
+2. [Features](#features)  
+3. [Technologies Used](#technologies-used)  
+4. [Dataset](#dataset)  
+5. [Setup and Installation](#setup-and-installation)  
+6. [Usage](#usage)  
+7. [Results](#results)  
+8. [Limitations](#limitations)  
 9. [Contributions](#contributions)
 
 ---
 
-## 📖 **Introduction**
+## Introduction
 
-Laptop prices depend heavily on specifications like processor brand, core type, RAM, storage, GPU, and weight. This system:
-- Predicts laptop prices using machine learning.
-- Recommends laptops within a user's preferred budget and features.
+Laptop pricing varies greatly based on factors like CPU, RAM, storage, GPU and brand. This system:
+- Predicts laptop prices with high accuracy using machine learning.
+- Recommends the best laptops under a given budget based on key user preferences.
 
-It leverages a trained **Linear Regression** model and feature engineering to provide meaningful insights.
-
----
-
-## ✨ **Features**
-
-- ✅ Preprocessing pipeline including:
-  - Cleaning data (unit removal like 'GB', 'kg').
-  - Extracting `Cpu_Brand`, `Core_Name`, and `Gpu_Brand`.
-  - Feature engineering for memory capacity.
-  - Encoding (Label & One-Hot).
-- 🧠 Linear Regression model for price prediction (R² = 0.85).
-- 💡 Recommendation engine based on price, RAM, and CPU filters.
-- 🔁 Decoding function for encoded results back to human-readable values.
+It includes data cleaning, feature engineering, model training, explainability (with SHAP), and a deployed Streamlit web app for user interaction.
 
 ---
 
-## 🛠 **Technologies Used**
-- **Python**: Core language.
-- **Pandas & NumPy**: Data processing.
-- **Matplotlib & Seaborn**: Visualizations.
-- **Scikit-learn**: Machine learning pipeline.
-- **Google Colab / Jupyter Notebook**: Execution environment.
+## Features
+
+- End-to-end preprocessing pipeline:
+  - Removed units (e.g. ‘GB’, ‘kg’) for clean numerical inputs  
+  - Extracted CPU brand, core name, and GPU brand  
+  - Engineered total memory (e.g. 128GB SSD + 1TB HDD → 1152GB)  
+  - Applied label and one-hot encoding for model-ready inputs  
+- Trained multiple ML models (Linear Regression, Random Forest, XGBoost)  
+- R² score up to 0.91 with XGBoost  
+- Recommendation engine based on price range, RAM, and CPU filters  
+- SHAP visualisation to explain model predictions  
+- Deployed Streamlit app for real-time price prediction and recommendations
 
 ---
 
-## 📊 **Dataset**
+## Technologies Used
 
-The dataset includes specs and prices of laptops, with features like:
-- `Company`, `TypeName`, `RAM`, `Weight`
-- `Cpu`, `Gpu`, `Memory`
-- `OpSys`, `Price_euros`
-
-### 🔧 After preprocessing:
-- **Price** converted to INR (multiplied by 90.97).
-- **Memory** extracted and summed (e.g., `128GB SSD + 1TB HDD` = `1152GB`).
-- **CPU** split into `Cpu_Brand` and `Core_Name`.
-- **Label Encoding** used for:
-  - `Cpu_Brand`, `Core_Name`
-- **One-Hot Encoding** used for:
-  - `Company`, `TypeName`, `OpSys`, `Gpu_Brand`
-
-📁 **Data Files**:
-- `laptop_price.csv`: Original raw data.
-- `input_features.csv`, `output_features.csv`: Cleaned and processed features.
+- Languages & Libraries: Python, Pandas, NumPy, Scikit-learn, XGBoost, SHAP  
+- Visualisation: Matplotlib, Seaborn  
+- Interface & Deployment: Streamlit (Cloud), Jupyter Notebook, VS Code
 
 ---
 
-## ⚙️ **Setup and Installation**
+## Dataset
+
+The original dataset contained multiple specifications for each laptop. After analysis and feature selection based on model performance and interpretability, the following key features were retained:
+
+- `Name`: Model name of the laptop  
+- `Brand`: Laptop manufacturer  
+- `RAM`: Amount of RAM in GB  
+- `Storage`: Total internal storage in GB  
+- `Storage_Type`: Whether the storage is HDD, SSD, or hybrid  
+- `OS`: Operating system installed  
+- `Processor_Name`: Combined field of processor brand, version, and generation
+
+### Preprocessing Steps:
+- Removed unnecessary columns based on low feature importance (identified through model evaluation)
+- Combined processor details (`Processor_Brand`, `Version`, `Generation`) into a single column `Processor_Name`
+- Handled missing values and unit conversion (e.g. 'GB', 'TB')
+- Label and One-Hot Encoding applied for categorical variables as needed
+- Normalised numerical features like `RAM` and `Storage`
+Data Files:
+- `data.csv ` Preprocessed and model-ready data  
+
+---
+
+## Setup and Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/laptop-price-recommendation.git
+   cd laptop-price-recommendation
+`
+
+ **Data Files**:
+- `data.csv`: Original raw data.
+
+
+---
+
+##  **Setup and Installation**
 
 1. Clone the repo:
    ```bash
@@ -83,61 +99,61 @@ The dataset includes specs and prices of laptops, with features like:
   ```bash
 pip install -r requirements.txt
 ```
-3.Run the notebook:
-```bash
-jupyter notebook notebooks/LAPTOP_RECOMMENDATION_MODEL.ipynb
-```
-Or use Google Colab to open the .ipynb file directly.
+3. Run the notebook:
+   ```bash
+   jupyter notebook notebooks/LAPTOP_RECOMMENDATION_MODEL.ipynb
+   ```
+   Or open the `.ipynb` file directly in Google Colab or VS Code with the Jupyter extension.
 
-## **Usage**
+---
 
-### **Data Preprocessing**
-- Handle null values  
+## Usage
+
+### Data Preprocessing
+- Handle missing values  
 - Encode categorical features  
-- Normalize or scale numeric columns  
+- Normalise or scale numerical columns  
 
-### **Train the Model**
-- Choose algorithm (default: **Linear Regression**)  
-- Evaluate using metrics like **R²**
+### Train the Model
+- Choose an algorithm (default: **XGBoost**)  
+- Evaluate performance using metrics like **R² score** and **RMSE**
 
-### **Make Predictions**
-- Input laptop features  
-- Predict price using the trained model  
+### Make Predictions
+- Input laptop specifications  
+- Predict the selling price using the trained model  
 
-### **Get Recommendations**
-- Enter your budget, brand preference, and specs  
-- Receive filtered and sorted laptop suggestions  
-
----
-
-## **Results**
-
-| **Model**            | **R² Score** | **RMSE** |
-|----------------------|--------------|----------|
-| Linear Regression    | 0.85         | ~7000    |
-| Random Forest        | 0.89         | ~5000    |
-| Gradient Boosting    | 0.91         | ~4500    |
-
-- 📌 The model accurately predicts prices with an **R² of up to 0.91**.
-- 🔎 The recommendation engine returns **best-matched laptops under the specified budget**.
+### Get Recommendations
+- Enter your budget, brand, and required specs  
+- Receive filtered and sorted laptop recommendations based on predicted price and specs  
 
 ---
 
-## **Limitations**
-- 📆 Dataset may not reflect the **latest laptop models**.  
-- ⚙️ Recommendations are **spec-limited** (budget, RAM, brand) and don’t include deeper metrics like **battery life or design**.  
-- 🔌 **Offline only**: Does not fetch live data from online retailers.  
-- ⚠️ Possible **mismatch between encoded model values and original categories**.  
+## Results
+
+| Model     | R² Score | RMSE (approx) |
+|-----------|----------|---------------|
+| XGBoost   | 0.91     | ₹4,500         |
+
+- The model accurately predicts laptop prices with an **R² score of 0.91**
+- The recommendation engine suggests laptops that best match user requirements within budget constraints  
 
 ---
 
-## **Contributions**
+## Limitations
 
-Contributions are highly appreciated! If you have ideas to improve the dataset, models, or UI, feel free to:
+- The dataset may not reflect the **latest laptop models** or price fluctuations  
+- Recommendations are based on selected specifications and don’t account for factors like **battery life**, **screen quality**, or **design**  
+- The app currently works **offline** and doesn’t integrate with real-time retailer APIs  
+- Some encoded feature values might differ slightly from the original category labels  
 
-- ✅ Fork the repo  
-- ✅ Make changes  
-- ✅ Create a pull request  
+---
 
-Or reach out on [LinkedIn](https://www.linkedin.com/in/mathan03/) to connect and collaborate!
+## Contributions
 
+Contributions are welcome! If you’d like to help improve the dataset, model, or user interface:
+
+- Fork the repository  
+- Make your changes  
+- Submit a pull request  
+
+Feel free to connect on [LinkedIn](https://www.linkedin.com/in/mathan03/) for collaboration or feedback.
