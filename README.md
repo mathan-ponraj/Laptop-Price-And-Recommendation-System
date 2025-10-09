@@ -1,3 +1,10 @@
+
+
+## Live Demo
+
+Try the interactive laptop price prediction and recommendation app online:  
+[Streamlit App - Laptop Price & Recommendation System](https://laptop-price-and-recommendation-system-icvhjjspmfrmmy2rfmtuaq.streamlit.app/)
+---
 # Laptop Price & Recommendation System – End-to-End ML Project
 
 A complete machine learning solution that predicts laptop prices based on technical specifications and recommends budget-friendly models. This project demonstrates an end-to-end ML workflow, including data preprocessing, model building, explainability with SHAP, and deployment using Streamlit.
