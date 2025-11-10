@@ -1,62 +1,74 @@
+# Laptop Price & Recommendation System — End-to-End ML Project
 
-
-## Live Demo
-
-Try the interactive laptop price prediction and recommendation app online:  
+**Live Demo:**  
 [Streamlit App - Laptop Price & Recommendation System](https://laptop-price-and-recommendation-system-icvhjjspmfrmmy2rfmtuaq.streamlit.app/)
----
-# Laptop Price & Recommendation System – End-to-End ML Project
 
-A complete machine learning solution that predicts laptop prices based on technical specifications and recommends budget-friendly models. This project demonstrates an end-to-end ML workflow, including data preprocessing, model building, explainability with SHAP, and deployment using Streamlit.
+## Problem Statement (Using the STAR Method)
 
----
+### Situation
+Choosing the right laptop can be confusing. With hundreds of models across different brands, buyers often struggle to find the best laptop that fits their budget and performance needs. Many end up discovering better options only after purchasing, which leads to regret and uncertainty.
 
-## Project Overview
+### Task
+To develop an intelligent system that can predict laptop prices and recommend better alternatives within a user-defined budget, helping buyers make smarter decisions.
 
-The objective is to predict laptop prices based on specifications like RAM, storage, CPU, GPU, and OS, and recommend laptops that fit within a user-defined budget. The workflow focuses on building a robust machine learning model and delivering a deployable web app for practical user interaction.
+### Action
+Built a complete machine learning pipeline that:
+- Predicts laptop prices based on key specifications (CPU, RAM, storage, GPU, brand, etc.)
+- Recommends top laptop options within a given price range.
+- Delivers results through an interactive Streamlit web app and an analytical Power BI dashboard.
 
----
+### Result
+- Achieved R² = 0.91 using XGBoost after tuning.
+- Improved recommendation accuracy by 40%.
+- Built a fully deployed web app for real-time user interaction.
+- Designed a Power BI dashboard to visualize pricing trends and patterns.
 
-## Features
+## Project Workflow
 
-- **Data Preprocessing Pipeline**  
-  - Cleaned a dataset of 1,300+ laptop records by removing units (GB, TB, kg).  
-  - Extracted processor brand, version, and GPU brand.  
-  - Engineered total storage capacity (e.g., SSD + HDD combinations).  
-  - Encoded categorical variables and scaled numerical features for modelling.
+### 1. Data Collection & Loading
+- Collected the laptop dataset from Kaggle.  
+- Loaded and explored the dataset using Pandas for initial inspection and validation.
 
-- **Model Building & Evaluation**  
-  - Trained multiple models (Linear Regression, Random Forest, XGBoost).  
-  - Achieved an R² score of **0.91** with XGBoost, with an RMSE of **₹4,500**.  
-  - Hyperparameter tuning was performed to optimise model performance.
+### 2. Data Preprocessing
+- Removed unwanted keywords, special characters, and extra spaces from laptop names.  
+- Cleaned numerical fields (e.g., GB, TB, kg) and standardized units.  
+- Detected and removed outliers using statistical methods (IQR-based filtering) to ensure model stability.
 
-- **Recommendation Engine**  
-  - Developed a recommendation logic that filters laptops based on budget, RAM, CPU preferences, and storage capacity.  
-  - Improved recommendation accuracy by **40%** through iterative testing on sample queries.
+### 3. Feature Engineering & Selection
+- Extracted key attributes such as processor brand, processor version, GPU type, and total storage.  
+- Applied SHAP analysis to identify the most influential features affecting price prediction.
 
-- **Explainable ML (XAI)**  
-  - Applied SHAP to visualise feature contributions affecting price predictions.  
-  - Identified **Processor Name**, **RAM**, and **Brand** as the top three influential factors on price.
+### 4. Model Development
+- Implemented and compared Random Forest and XGBoost models.  
+- Conducted hypothesis testing and hyperparameter tuning to optimize performance.  
+- Used A/B testing to determine the better-performing model for final deployment.
 
-- **Deployment with Streamlit**  
-  - Built a user-friendly web interface that allows users to input laptop specifications and receive price predictions and recommendations in real-time.  
-  - Deployed the Streamlit app for interactive testing and demonstrations.
+### 5. Model Evaluation
+- Final model achieved an R² score of 0.91 and RMSE ≈ ₹4,500.  
+- XGBoost performed best in terms of accuracy and generalization.
 
----
+### 6. Deployment
+- Deployed the trained model using Streamlit to create an interactive web interface.  
+- Integrated user inputs for price, RAM, and storage to display predictions and top recommendations in real time.
+
+### 7. Power BI Dashboard
+- Designed a Power BI dashboard to analyze pricing trends, distribution by brand, and category-wise comparisons.  
+- Helped visualize how specifications influence laptop pricing patterns.
 
 ## Technologies Used
 
-- Python  
-- Pandas, NumPy  
-- Scikit-learn (Pipeline, ColumnTransformer, Regression Models)  
-- XGBoost  
-- SHAP (Explainability)  
-- Matplotlib, Seaborn (Visualisation)  
-- Streamlit (Web App Deployment)
+- Programming Language: Python  
+- Libraries: Pandas, NumPy, Scikit-learn, XGBoost, SHAP  
+- Visualization: Matplotlib, Seaborn, Power BI  
+- Deployment: Streamlit  
+- Data Source: Kaggle Laptop Dataset
+
+
+
 
 ---
 
-## Project Structure
+## Repository Structure
 ```
 Laptop_Price_Recommendation_System/
 ├── README.md # Project documentation
@@ -71,15 +83,6 @@ Laptop_Price_Recommendation_System/
 
 ---
 
-## Results
-
-- Achieved an **R² score of 0.91** on test data, ensuring reliable price prediction accuracy.
-- Reduced prediction error (RMSE) to approximately **₹4,500**, suitable for price estimation use-cases.
-- Enhanced recommendation matching by **40%** through iterative logic refinement.
-- Delivered an interactive Streamlit app to simulate real-time predictions and recommendations.
-- SHAP analysis revealed that **Processor Brand**, **RAM Size**, and **Brand** contribute to **70% of pricing variance**.
-
----
 
 ## Limitations
 
@@ -90,9 +93,10 @@ Laptop_Price_Recommendation_System/
 
 ---
 
-## Conclusion
 
-This project demonstrates a comprehensive machine learning pipeline that integrates predictive modelling, explainability, and user-facing deployment. By achieving high accuracy and building a recommendation engine, it showcases a practical use-case of AI-driven product recommendation systems in the e-commerce domain.
+## Conclusion
+This project demonstrates how machine learning and analytics can simplify real-world decision-making.  
+By combining predictive modeling, explainable AI (SHAP), and data visualization, this system helps users make confident laptop purchase choices without regret.
 
 ---
 
